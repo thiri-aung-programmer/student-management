@@ -7,6 +7,11 @@
     <title>Basic HTML template</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        *{
+            padding:0;
+            margin: 0;
+            max-width: 100vw;
+        }
         body{
             font-family: Arial, Helvetica, sans-serif;
             margin: 0;
@@ -14,6 +19,10 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            max-width: 100%;
+        }
+        nav{
+            max-width: 100%;
         }
         nav ul{
             list-style-type: none;
@@ -50,7 +59,7 @@
             padding:10px;
             position: relative;
             bottom: 0;
-            width: 100%;
+            max-width: 100%;
         }
     </style>
 </head>
