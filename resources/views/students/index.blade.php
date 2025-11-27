@@ -78,10 +78,12 @@ h2{
 @endsection
 @section('content')
 <h2>Students</h2>
-<div class="search">
-    <input type="text" placeholder="Search">
-    <Button>Search</Button>
+<form action="{{ URL('student') }}" method="GET">
+    <div class="search">
+    <input type="text" placeholder="Search" id="search" name="search" value="{{ request('search') }}">
+    <Button type="submit">Search</Button>
 </div>
+</form>
 <table>
     <thead>
         <tr>
