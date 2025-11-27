@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Basic HTML template</title>
+    @yield('head')
     <link rel="stylesheet" href="styles.css">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <style>
         *{
             padding:0;
@@ -23,6 +25,7 @@
         }
         nav{
             max-width: 100%;
+            margin:0;
         }
         nav ul{
             list-style-type: none;
@@ -39,18 +42,22 @@
             color:white;
             text-decoration: none;
         }
-        .container{
+        .main-container{
             display: flex;
             flex:1;
+            padding:0;
+            margin:0;
         }
         .sidebar{
-            width:250px;
+            width:150px;
             background:#f4f4f4;
             padding:15px;
+            margin:0;
         }
         .main-content{
             flex:1;
             padding:20px;
+            margin:0;
         }
         footer{
             background: #004080;
@@ -61,6 +68,7 @@
             bottom: 0;
             max-width: 100%;
         }
+         @yield('styles')
     </style>
 </head>
 <body>
@@ -72,7 +80,7 @@
             <li><a href="#">Contact Us</a></li>
         </ul>
     </nav>
-    <div class="container">
+    <div class="main-container">
         <aside class="sidebar">
             <h2>SideBar</h2>
             <ul>
