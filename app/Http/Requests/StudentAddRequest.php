@@ -27,8 +27,8 @@ class StudentAddRequest extends FormRequest
              "age"=>"required|integer|min:1|max:100",
              "date_of_birth"=>"required|date",
              "gender"=>"required|in:m,f",
-             "score"=>"required|integer|min:0|max:100"
-              // "image"=>"nullable|image|mimes:png,jpg,jpeg,gif|max:2048"
+             "score"=>"required|integer|min:0|max:100",
+              "image"=>"nullable|image|mimes:png,jpg,jpeg,gif|max:2048"
         ];
     }
     public function messages(): array

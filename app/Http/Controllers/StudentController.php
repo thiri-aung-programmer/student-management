@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Http\Requests\StudentAddRequest;
 use App\Models\Student;
+use Illuminate\Support\Facades\Storage;
+
 use Illuminate\Support\Facades\DB;
 
 
@@ -25,7 +27,10 @@ class StudentController extends Controller
 
    public function create(StudentAddRequest $request){
 
-   
+    $imagePath=null;
+    if($request->hasFile("image")){
+        $imagePath = $request->file("image")->store('photos','public');
+    }
     $student=new Student();
     $student->name = $request->name;
     $student->email = $request->email;
@@ -33,6 +38,7 @@ class StudentController extends Controller
     $student->age= $request->age;
     $student->date_of_birth= $request->date_of_birth;
     $student->score = $request->score;
+    $student->image= $imagePath;
     $student->save();
     return redirect('student');
 }
@@ -53,7 +59,11 @@ public function update(Request $request, $id){
     return redirect('student');
 }
 public function destroy($id){
-    Student::findOrFail($id)->delete();
+    $student=Student::findOrFail($id);
+    if($student->image){
+        Storage::disk('public')->delete($student->image);
+    }
+    $student->delete();
     return redirect('student');
 }
 }

@@ -108,6 +108,7 @@ h2{
         <th>Date of Birth</th>
         <th>Gender</th>
         <th>Score</th>
+        <th>Image</th>
         <th>Action</th>
     </tr>
     </thead>
@@ -121,6 +122,11 @@ h2{
                 <td>{{$student->date_of_birth }}</td>
                 <td>{{$student->gender }}</td>
                 <td>{{$student->score }}</td>
+                <td class="text-center">
+                    @if($student->image)
+                        <img src="{{ asset('storage/'.$student->image )}}" alt="" class="img-fluid" width="100">
+                    @endif
+                </td>
                 <td>
                     <a href="{{ URL('student/edit',$student->id) }}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
                     <form action="{{ route('student.delete', $student->id) }}" method="POST" onsubmit="return confirm('Are You Sure To delete this student?')" style="display:inline">
