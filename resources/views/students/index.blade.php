@@ -123,7 +123,7 @@ h2{
                 <td>{{$student->score }}</td>
                 <td>
                     <a href="{{ URL('student/edit',$student->id) }}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
-                    <form action="{{ URL('student/delete',$student->id) }}" style="display:inline" onsubmit="return confirm('Are You Sure To delete this student?')" method="POST">
+                    <form action="{{ route('student.delete', $student->id) }}" method="POST" onsubmit="return confirm('Are You Sure To delete this student?')" style="display:inline">
                         @csrf                      
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button>

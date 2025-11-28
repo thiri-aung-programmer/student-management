@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\StudentAddRequest;
 use App\Models\Student;
 use Illuminate\Support\Facades\DB;
 
@@ -22,7 +23,9 @@ class StudentController extends Controller
     return view("students.index",compact("students"));
    }
 
-   public function create(Request $request){
+   public function create(StudentAddRequest $request){
+
+   
     $student=new Student();
     $student->name = $request->name;
     $student->email = $request->email;
@@ -53,5 +56,4 @@ public function destroy($id){
     Student::findOrFail($id)->delete();
     return redirect('student');
 }
-
 }

@@ -51,7 +51,7 @@
                         <label for="score" class="form-label">Score</label>
                         <input type="number" class="form-control" id="score" name="score" required value="{{$student->score}}">
                     </div>
-                    <button type="submit" class="btn btn-success fw-bold px-3 py-1">Submit</button>
+                    <button type="submit" class="btn btn-danger fw-bold px-3 py-1">Update</button>
                 </form>
             </div>
         </div>
