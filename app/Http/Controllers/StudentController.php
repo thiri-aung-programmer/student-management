@@ -17,9 +17,41 @@ class StudentController extends Controller
         'like',
         '%' . $request->search . '%'
     );
-    })->get();
+    })->paginate(7);
     
     return view("students.index",compact("students"));
    }
+
+   public function create(Request $request){
+    $student=new Student();
+    $student->name = $request->name;
+    $student->email = $request->email;
+    $student->gender = $request->gender;
+    $student->age= $request->age;
+    $student->date_of_birth= $request->date_of_birth;
+    $student->score = $request->score;
+    $student->save();
+    return redirect('student');
+}
+public function edit($id)
+{
+    $student=Student::findOrFail($id);
+    return view('students.edit',compact('student'));
+}
+public function update(Request $request, $id){
+    $student=Student::findOrFail($id);
+    $student->name = $request->name;
+    $student->email = $request->email;
+    $student->gender = $request->gender;
+    $student->age= $request->age;
+    $student->date_of_birth= $request->date_of_birth;
+    $student->score = $request->score;
+    $student->update();
+    return redirect('student');
+}
+public function destroy($id){
+    Student::findOrFail($id)->delete();
+    return redirect('student');
 }
 
+}

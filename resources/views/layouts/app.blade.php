@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles.css">
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         *{
             padding:0;
@@ -26,10 +27,14 @@
         nav{
             max-width: 100%;
             margin:0;
+            padding:0;
+            /* background: green; */
         }
         nav ul{
             list-style-type: none;
             padding: 0;
+            min-height: 100%;
+            margin:0;
             background: #005bb5;
             overflow: hidden;
             display:flex;
@@ -47,16 +52,17 @@
             flex:1;
             padding:0;
             margin:0;
+            /* background: rgb(248, 148, 148); */
         }
         .sidebar{
-            width:150px;
+            width:100px;
             background:#f4f4f4;
-            padding:15px;
+            padding:5px;
             margin:0;
         }
         .main-content{
             flex:1;
-            padding:20px;
+            padding:10px;
             margin:0;
         }
         footer{
@@ -82,18 +88,14 @@
     </nav>
     <div class="main-container">
         <aside class="sidebar">
-            <h2>SideBar</h2>
+            <h4>SideBar</h4>
             <ul>
                 <li><a href="#">Link 1</a></li>
                 <li><a href="#">Link 2</a></li>
                 <li><a href="#">Link 3</a></li>
             </ul>
         </aside>
-        <main class="main-content">
-            {{-- <section>
-                <h2>About Us</h2>
-                <p>This is a simple HTML and CSS Template to start your project.</p>
-            </section> --}}
+        <main class="main-content">           
             @yield('content')
         </main>
     </div>

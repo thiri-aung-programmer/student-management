@@ -75,6 +75,19 @@ h2{
     background-color:#da190b;
     color:black;
 }
+
+.addStudentButton{
+    padding:10px 20px;
+    background-color:#005bb5;
+    font-weigtht:bold;
+    color:white;
+    border:1px solid #005bb5;
+    display:inline-block;
+    border-radius:5px;
+}
+.addStudentButton:hover{
+    background-color:#004080;
+}
 @endsection
 @section('content')
 <h2>Students</h2>
@@ -82,6 +95,7 @@ h2{
     <div class="search">
     <input type="text" placeholder="Search" id="search" name="search" value="{{ request('search') }}">
     <Button type="submit">Search</Button>
+    <a href="{{ URL('student/add') }}" class="addStudentButton ms-3" title="Add Student"><i class="fa-solid fa-plus"></i></a>
 </div>
 </form>
 <table>
@@ -108,12 +122,21 @@ h2{
                 <td>{{$student->gender }}</td>
                 <td>{{$student->score }}</td>
                 <td>
-                    <a href="#" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
-                    <a href="#" class="btn btn-danger"><i class="bi bi-trash3-fill"></i></a>
+                    <a href="{{ URL('student/edit',$student->id) }}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                    <form action="{{ URL('student/delete',$student->id) }}" style="display:inline" onsubmit="return confirm('Are You Sure To delete this student?')" method="POST">
+                        @csrf                      
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button>
+                    </form>
                 </td>
             </tr>
         @endforeach
     </tbody>
 </table>
+<div class="paginationDiv w-100">
+    {{ $students->
+    appends(request()->query())
+    ->links('pagination::bootstrap-5') }}
+</div>
 
 @endsection
